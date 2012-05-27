@@ -38,7 +38,8 @@ DeviceAudio* DeviceAudioRt::create(unsigned int nTracks, unsigned int frequency,
     return s_instance;
 }
 
-DeviceAudioRt::DeviceAudioRt(unsigned int nTracks, unsigned int frequency, unsigned int chunkSize) : DeviceAudio() {
+DeviceAudioRt::DeviceAudioRt(unsigned int nTracks, unsigned int frequency, unsigned int chunkSize)
+  : DeviceAudio(), ma_sound(0) {
 	if ( m_dac.getDeviceCount() < 1 ) {
 		fprintf(stderr,"DeviceAudioRt ERROR: No audio devices found!\n");
 		return;
