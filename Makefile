@@ -2,7 +2,7 @@
 # settings for C++ compiler:
 C      = gcc
 CC     = g++
-CFLAGS = -O2 -Wall # -D_DEBUG -g
+CFLAGS = -O2 -Wall -fPIC # -D_DEBUG -g
 INCDIR = -Irtaudio -Irtaudio/include -I../lua/src
 
 # linker settings:
@@ -13,16 +13,23 @@ LIB    = $(LNAME)
 LIBDIR =
 
 # settings for optional libSDL backend:
-INCDIR += -I../archive/baseCode/include
-SDLLIB = -lSDLmain -lSDL
-SDLDIR = -L/usr/lib -L../archive/baseCode/lib
+INCDIR += $(shell sdl-config --cflags)
+SDLLIB = $(shell sdl-config --libs)
+
+USE_PULSE=1
 
 #--- platform specific settings ------------------------------------
 ARCH = $(shell uname -s)
 ifeq ($(ARCH),Linux)
-  LIBS          = $(LIBDIR) $(LIB) -lpthread -lasound
-  LUALIB      = -llua -ldl
-  CFLAGS += -DHAVE_GETTIMEOFDAY -D__LINUX_ALSA__ #-D__LINUX_OSS__
+  LIBS = $(LIBDIR) $(LIB) -lpthread -lasound
+
+  ifeq ($(USE_PULSE),1)
+    INCDIR += $(shell pkg-config --cflags libpulse-simple)
+    LIBS += $(shell pkg-config --libs libpulse-simple)
+  endif
+
+  LUALIB = -llua -ldl
+  CFLAGS += -DHAVE_GETTIMEOFDAY $(if $(filter 1,$(USE_PULSE)),-D__LINUX_PULSE__,-D__LINUX_ALSA__) #-D__LINUX_OSS__
   DLLFLAGS =  -fPIC -shared
   DLLSUFFIX = .so
   EXESUFFIX =
@@ -79,7 +86,7 @@ proAudioRt$(DLLSUFFIX): proAudioRt_lua.o
 sdl: playAudioSdl$(EXESUFFIX)
 
 playAudioSdl$(EXESUFFIX): playAudioSdl.o proAudio.o proAudioSdl.o stb_vorbis.o
-	$(CC) $(CFLAGS) $^ $(SDLDIR) $(SDLLIB) -o $@
+	$(CC) $(CFLAGS) $^ $(SDLLIB) -o $@
 
 # generic rules
 .c.o:
