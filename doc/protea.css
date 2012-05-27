@@ -1,0 +1,116 @@
+  body { 
+    font-family: Helvetica,sans-serif;
+    color: black;
+    background-color: white;
+    margin: 30px 50px 50px 50px;
+    text-align: left;
+    width: 640px;
+    font-size: 90%;  
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: maroon;
+}
+
+  h1 {
+	font-size: 150%;  
+  }
+
+  h2 {
+	margin: 25px 0px 10px 0px;
+	font-size: 110%;  
+  }
+
+  a:link, a:visited, a:link:active { 
+    text-decoration: none;
+    color: maroon;
+  }
+
+  a:link:hover, a:visited:hover { 
+    text-decoration: underline;
+    color: red;
+  }
+  
+  p, ul {
+    font-size: 90%;  
+  }
+  
+  pre {
+    background-color: #DDD; 
+	width: 100%;
+    font-weight: bold;
+  }
+  
+  
+  
+CAPTION { font-weight: bold }
+DIV.qindex {
+	font-size: 90%;
+	width: 100%;
+	border-bottom: 1px solid #b0b0b0;
+	margin: 2px;
+	padding: 2px;
+	line-height: 140%;
+}
+
+TD { 
+	font-size: 90%;
+}
+TABLE.mdtable {
+	background-color: #DDD; 
+	width: 100%;
+}
+TD.md { 
+	font-weight: bold; 
+}
+TD.mdPrefix {
+	color: #606060;
+}
+TD.mdname { 
+	font-weight: bold; 
+	color: #602020; 
+}
+
+DIV.groupHeader {
+       margin-left: 16px;
+       margin-top: 12px;
+       margin-bottom: 6px;
+       font-weight: bold;
+}
+DIV.groupText { margin-left: 16px; font-style: italic; font-size: 90% }
+TD.indexkey {
+	font-weight: bold;
+	padding-right  : 10px;
+	padding-top    : 2px;
+	padding-left   : 10px;
+	padding-bottom : 2px;
+	margin-left    : 0px;
+	margin-right   : 0px;
+	margin-top     : 2px;
+	margin-bottom  : 2px;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+}
+TD.indexvalue {
+	font-style: italic;
+	padding-right  : 10px;
+	padding-top    : 2px;
+	padding-left   : 10px;
+	padding-bottom : 2px;
+	margin-left    : 0px;
+	margin-right   : 0px;
+	margin-top     : 2px;
+	margin-bottom  : 2px;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+}
+TR.memlist {
+   background-color: #DDD; 
+}
+SPAN.keyword       { color: #008000 }
+SPAN.keywordtype   { color: #604020 }
+SPAN.keywordflow   { color: #e08000 }
+SPAN.comment       { color: #800000 }
+SPAN.preprocessor  { color: #806020 }
+SPAN.stringliteral { color: #002080 }
+SPAN.charliteral   { color: #008080 }

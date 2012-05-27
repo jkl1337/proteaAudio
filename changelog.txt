@@ -1,0 +1,7 @@
+/** \page Changelog Changelog
+
+\section v062 Version 0.6.2 (2009-02-04)
+- switch to new rtAudio version 4.0.5
+- additional includes to support also newer versions of gcc/g++
+- proteaAudio zip archives expand to single folders
+*/
